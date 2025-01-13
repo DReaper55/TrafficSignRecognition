@@ -1,42 +1,51 @@
-from keras.src.preprocessing.image import ImageDataGenerator
+import numpy as np
 
-from src.utils.helpers import load_images_from_one_folder, get_path_to
+from src.features.build_features import augment_images
+from src.utils.helpers import load_images_from_one_folder, get_path_to, load_all_images_from_folder, normalize_images
 from src.visualization.visualize import plot_images
 
 
-def process_data(images, labels, class_names):
+def process_data(images, labels):
 
-    augment_images(images, labels, class_names)
+    new_images, new_labels = augment_images(images, labels)
 
-
-def normalize_images(images):
-    # Normalize pixel values to [0, 1]
-    return images / 255.0
-
-def augment_images(images, labels, class_names):
-    # Data Augmentation
-    data_gen = ImageDataGenerator(
-        rotation_range=30,        # Rotate images up to 30 degrees
-        width_shift_range=0.2,    # Horizontally shift images
-        height_shift_range=0.2,   # Vertically shift images
-        zoom_range=0.2,           # Zoom in/out
-        horizontal_flip=True,     # Flip images horizontally
-        brightness_range=[0.8, 1.2],  # Adjust brightness
-    )
-
-    # Generate augmented images
-    augmented_data = data_gen.flow(images, labels, batch_size=32)
-
-    # Display some augmented images
-    augmented_images, augmented_labels = next(augmented_data)
-
-    augmented_images = normalize_images(augmented_images)
-
-    plot_images(augmented_images, augmented_labels, class_names)
+    return new_images, new_labels
 
 
-folder_path = get_path_to('data/raw/Meta')
+def get_dataset(is_test=False, is_train=False):
+    images = []
+    labels = []
+    class_names = []
 
-images, labels, class_names = load_images_from_one_folder(folder_path, class_name="Meta")
+    if is_test:
+        test_folder_path = get_path_to('data/raw/Test')
+        images, labels, class_names = load_images_from_one_folder(test_folder_path, class_name="Test")
 
-process_data(images, labels, class_names)
+
+    if is_train:
+        train_folder_path = get_path_to('data/raw/Train')
+        images, labels, class_names = load_all_images_from_folder(train_folder_path)
+
+
+
+    # images = np.concatenate((test_images, train_images), axis=0)
+    # labels = np.concatenate((test_labels, train_labels), axis=0)
+
+    # new_images, new_labels = process_data(images, labels)
+    #
+    # images = np.concatenate((images, new_images), axis=0)
+    # labels = np.concatenate((labels, new_labels), axis=0)
+
+    images = normalize_images(images)
+    return images, labels
+
+
+# train_folder_path = get_path_to('data/raw/Train')
+# train_images, train_labels, train_class_names = load_all_images_from_folder(train_folder_path)
+
+# images, labels = get_dataset(is_train=True)
+#
+# print(images.shape)
+# print(labels.shape)
+#
+# plot_images(images, labels)

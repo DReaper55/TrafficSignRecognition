@@ -42,9 +42,22 @@ def load_images_from_one_folder(folder_path, label=0, class_name="unknown"):
 def load_all_images_from_folder(folder_path):
     images = []
     labels = []
+
+    folder_name = os.path.basename(folder_path)
+
+    # Construct the CSV file path
+    csv_file_path = get_path_to(f"data/raw/{folder_name}.csv")
+
+    # Read the CSV file into a DataFrame
+    df = pd.read_csv(csv_file_path)
+
+    # Create a dictionary to map file paths to their respective class IDs
+    label_dict = dict(zip(df['Path'], df['ClassId']))
+
     class_names = os.listdir(folder_path)
-    for label, class_name in enumerate(class_names):
+    for _, class_name in enumerate(class_names):
         class_folder = os.path.join(folder_path, class_name)
+
         if os.path.isdir(class_folder):
             for file_name in os.listdir(class_folder):
                 file_path = os.path.join(class_folder, file_name)
@@ -53,7 +66,13 @@ def load_all_images_from_folder(folder_path):
                     # Resize to uniform size
                     img = cv2.resize(img, (IMG_SIZE, IMG_SIZE))
                     images.append(img)
+                    # labels.append(label)
+
+                    # Get the label from the dictionary
+                    rel_path = os.path.relpath(file_path, folder_path).replace("\\", "/")
+                    label = label_dict.get(f"{folder_name}/{rel_path}", 0) # Default to 0 if path not found
                     labels.append(label)
+
     return np.array(images), np.array(labels), class_names
 
 
@@ -61,3 +80,8 @@ def get_path_to(dir):
     current_dir = os.path.dirname(os.path.realpath(__file__))
     project_root = os.path.abspath(os.path.join(current_dir, '../../'))
     return os.path.join(project_root, dir)
+
+
+def normalize_images(images):
+    # Normalize pixel values to [0, 1]
+    return images / 255.0
