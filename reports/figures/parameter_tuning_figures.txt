@@ -1,0 +1,148 @@
+Trial #1
+
+Value             |Best Value So Far |Hyperparameter
+1                 |1                 |num_conv_layers
+64                |64                |filters
+tanh              |tanh              |activation
+192               |192               |dense_units
+
+loss: 0.3373 - accuracy: 0.8978 - val_loss: 0.4546 - val_accuracy: 0.8739
+
+Trial 1 Complete [00h 32m 14s]
+val_accuracy: 0.8795419335365295
+
+------------------------------------------------------------
+
+Trial #2
+
+Value             |Best Value So Far |Hyperparameter
+2                 |1                 |num_conv_layers
+128               |64                |filters
+relu              |tanh              |activation
+256               |192               |dense_units
+
+loss: 0.0653 - accuracy: 0.9791 - val_loss: 0.2479 - val_accuracy: 0.9384
+
+Trial 2 Complete [01h 16m 38s]
+val_accuracy: 0.9454262852668762
+
+------------------------------------------------------------
+
+Trial #3
+
+Value             |Best Value So Far |Hyperparameter
+3                 |2                 |num_conv_layers
+32                |128               |filters
+relu              |relu              |activation
+256               |256               |dense_units
+
+loss: 0.0317 - accuracy: 0.9903 - val_loss: 0.2241 - val_accuracy: 0.9516
+
+Trial 3 Complete [00h 11m 40s]
+val_accuracy: 0.9688957929611206
+
+-------------------------------------------------------------
+
+Trial #4
+
+Value             |Best Value So Far |Hyperparameter
+3                 |3                 |num_conv_layers
+64                |32                |filters
+tanh              |relu              |activation
+64                |256               |dense_units
+
+loss: 0.0857 - accuracy: 0.9740 - val_loss: 0.1282 - val_accuracy: 0.9647
+
+Trial 4 Complete [00h 26m 47s]
+val_accuracy: 0.9683302640914917
+
+---------------------------------------------------------------
+
+Trial #5
+
+Value             |Best Value So Far |Hyperparameter
+1                 |3                 |num_conv_layers
+128               |32                |filters
+tanh              |relu              |activation
+192               |256               |dense_units
+
+loss: 0.6121 - accuracy: 0.8114 - val_loss: 0.6279 - val_accuracy: 0.8149
+
+Trial 5 Complete [01h 00m 29s]
+val_accuracy: 0.8358546495437622
+
+---------------------------------------------------------------
+
+Trial #6
+
+Value             |Best Value So Far |Hyperparameter
+3                 |3                 |num_conv_layers
+128               |32                |filters
+relu              |relu              |activation
+192               |256               |dense_units
+
+loss: 0.0405 - accuracy: 0.9871 - val_loss: 0.1545 - val_accuracy: 0.9712
+
+Trial 6 Complete [01h 17m 03s]
+val_accuracy: 0.9762477278709412
+
+---------------------------------------------------------------
+
+Trial #7
+
+Value             |Best Value So Far |Hyperparameter
+2                 |3                 |num_conv_layers
+32                |128               |filters
+tanh              |relu              |activation
+256               |192               |dense_units
+
+loss: 0.0767 - accuracy: 0.9755 - val_loss: 0.2519 - val_accuracy: 0.9391
+
+Trial 7 Complete [00h 13m 32s]
+val_accuracy: 0.9390640258789062
+
+---------------------------------------------------------------
+
+Trial #8
+
+Value             |Best Value So Far |Hyperparameter
+2                 |3                 |num_conv_layers
+64                |128               |filters
+tanh              |relu              |activation
+256               |192               |dense_units
+
+loss: 0.1729 - accuracy: 0.9452 - val_loss: 0.2756 - val_accuracy: 0.9248
+
+Trial 8 Complete [00h 29m 15s]
+val_accuracy: 0.9291672706604004
+
+---------------------------------------------------------------
+
+Trial #9
+
+Value             |Best Value So Far |Hyperparameter
+2                 |3                 |num_conv_layers
+64                |128               |filters
+relu              |relu              |activation
+64                |192               |dense_units
+
+loss: 0.4362 - accuracy: 0.8440 - val_loss: 0.2793 - val_accuracy: 0.9302
+
+Trial 9 Complete [09h 35m 53s]
+val_accuracy: 0.9377915859222412
+
+---------------------------------------------------------------
+
+Trial #10
+
+Value             |Best Value So Far |Hyperparameter
+1                 |3                 |num_conv_layers
+64                |128               |filters
+relu              |relu              |activation
+256               |192               |dense_units
+
+loss: 0.1545 - accuracy: 0.9496 - val_loss: 0.4269 - val_accuracy: 0.9058
+
+Trial 10 Complete [00h 39m 18s]
+val_accuracy: 0.9151703715324402
+

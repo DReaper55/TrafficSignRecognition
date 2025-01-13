@@ -15,7 +15,6 @@ async def predict(file: UploadFile):
     content = await file.read()
     np_image = np.frombuffer(content, np.uint8)
 
-
     img = cv2.imdecode(np_image, cv2.IMREAD_COLOR)
 
     # Preprocess image

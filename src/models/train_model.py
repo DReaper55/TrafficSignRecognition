@@ -37,7 +37,7 @@ def train_and_save_model(X_train, y_train, X_val, y_val, model_file_name='traffi
     history = model.fit(
         X_train, y_train,
         validation_data=(X_val, y_val),
-        epochs=20,
+        epochs=12,
         batch_size=32,
         callbacks=[early_stopping, model_checkpoint]
     )
